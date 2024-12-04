@@ -1,0 +1,37 @@
+{
+  "name": "hacker-news-clone",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch server/index.ts",
+    "start": "tsx server/index.ts",
+    "format:write": "prettier . --write",
+    "format:check": "prettier . --check",
+    "lint:server": "cd server && eslint .",
+    "lint:frontend": "cd frontend && eslint ."
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.13.7",
+    "@lucia-auth/adapter-drizzle": "^1.1.0",
+    "dotenv": "^16.4.5",
+    "drizzle-orm": "^0.36.4",
+    "drizzle-zod": "^0.5.1",
+    "hono": "^4.6.12",
+    "lucia": "^3.2.2",
+    "postgres": "^3.4.5",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@eslint/compat": "^1.2.3",
+    "@eslint/js": "^9.16.0",
+    "@ianvs/prettier-plugin-sort-imports": "^4.4.0",
+    "@types/node": "^20.17.9",
+    "drizzle-kit": "^0.28.1",
+    "eslint": "^9.16.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-drizzle": "^0.2.3",
+    "globals": "^15.13.0",
+    "prettier": "^3.4.1",
+    "tsx": "^4.7.1",
+    "typescript-eslint": "^8.17.0"
+  }
+}
