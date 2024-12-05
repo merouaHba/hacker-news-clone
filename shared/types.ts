@@ -1,10 +1,10 @@
 import { z } from "zod";
 
-// import { insertCommentsSchema } from "../server/db/schemas/comments";
-// import { insertPostSchema } from "../server/db/schemas/posts";
-// import type { ApiRoutes } from "../server/index";
+import { insertCommentsSchema } from "../server/db/schemas/comments";
+import { insertPostSchema } from "../server/db/schemas/posts";
+import type { ApiRoutes } from "../server/index";
 
-// export { type ApiRoutes };
+export { type ApiRoutes };
 
 export type SuccessResponse<T = void> = {
   success: true;
@@ -26,16 +26,16 @@ export const loginSchema = z.object({
   password: z.string().min(3).max(255),
 });
 
-// export const createPostSchema = insertPostSchema
-//   .pick({
-//     title: true,
-//     url: true,
-//     content: true,
-//   })
-//   .refine((data) => data.url || data.content, {
-//     message: "Either URL or Content must be provided",
-//     path: ["url", "content"],
-//   });
+export const createPostSchema = insertPostSchema
+  .pick({
+    title: true,
+    url: true,
+    content: true,
+  })
+  .refine((data) => data.url || data.content, {
+    message: "Either URL or Content must be provided",
+    path: ["url", "content"],
+  });
 
 export const sortBySchema = z.enum(["points", "recent"]);
 export const orderSchema = z.enum(["asc", "desc"]);
@@ -52,7 +52,7 @@ export const paginationSchema = z.object({
   site: z.string().optional(),
 });
 
-// export const createCommentSchema = insertCommentsSchema.pick({ content: true });
+export const createCommentSchema = insertCommentsSchema.pick({ content: true });
 
 export type Post = {
   id: number;
