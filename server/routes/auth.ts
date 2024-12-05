@@ -40,7 +40,7 @@ export const authRouter = new Hono<Context>()
    const userId = generateId(15);
 
     try {
-      await db.insert(userTable).values({
+     await db.insert(userTable).values({
         id: userId,
         username,
         password: passwordHash,
@@ -100,7 +100,6 @@ export const authRouter = new Hono<Context>()
     const sessionCookie = lucia.createSessionCookie(session.id).serialize();
 
     c.header("Set-Cookie", sessionCookie, { append: true });
-
     return c.json<SuccessResponse>(
       {
         success: true,
@@ -117,6 +116,7 @@ export const authRouter = new Hono<Context>()
 
     await lucia.invalidateSession(session.id);
     c.header("Set-Cookie", lucia.createBlankSessionCookie().serialize());
+    
     return c.redirect("/");
   })
   .get("/user", loggedIn, async (c) => {
